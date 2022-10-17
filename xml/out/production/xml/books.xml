@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<books>
+    <book id="100">
+        <name>天龙八部</name>
+        <author>金庸</author>
+        <price>23.4</price>
+    </book>
+    <book id="200">
+        <name>三国演义</name>
+        <author>罗贯中</author>
+        <price>50.4</price>
+    </book>
+</books>
