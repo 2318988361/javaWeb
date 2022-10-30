@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $("#b1").click(function (){
+
+                var $input = $("input[type='checkbox']:checked");
+                console.log("选择个数" + $input.length)
+
+                $input.each(function (){
+                    console.log("运动包括：" + $(this).val())
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<table width="400" height="50" border="0" cellpadding="0" cellspacing="0" style="margin:-30px -20px 0px 0px; background: #9E9A9E" >
+篮球:<input type="checkbox" name="hobby" id="lq" height="15" value="篮球">
+排球:<input type="checkbox" name="hobby" id="pq" height="15" value="排球">
+羽毛球:<input type="checkbox" name="hobby" id="ymq" height="15" value="羽毛球">
+乒乓球:<input type="checkbox" name="hobby" id="ppq" height="15" value="乒乓球">
+<input type="button" name="b1" id="b1" value="选中的个数">
+</table>
+
+</body>
+</html>

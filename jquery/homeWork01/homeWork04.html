@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+    <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            /*
+            逐步构建 ：1，nameTD,名字从输入得到
+            2，emailTD,telTD,deleteTD
+            3,构建TR  把前面的TD，加入
+            4,tr加入到table的tbody
+            5.动态绑定删除按钮
+             */
+            //初始化用户也绑定删除事件
+            $("a").click(function(){
+                //调用方法的时候需要对this包装成jquery对象
+                return deleteUser($(this));
+            })
+
+
+
+            //点击删除
+            function deleteUser($a){
+                //弹出确认对话框
+                var b = confirm("你确认要删除 " + $a.attr("id") + "用户信息" );
+                if (!b){
+                    return false;
+                }
+                //继续删除
+                $a.parent().parent().remove();
+                return false;
+            }
+            //点击添加
+            $("input[type='submit']").click(function (){
+                //创建$nameTD
+                var $nameTD = $("<td/>");
+                var nameVal = $("#name").val();
+                $nameTD.append(nameVal);
+                //创建$emailTD
+                var $emailTD = $("<td/>");
+                var emailVal = $("#email").val();
+                $emailTD.append(emailVal)
+                //创建$telTD
+                var $telTD = $("<td/>");
+                var telVal = $("#tel").val();
+                $telTD.append(telVal)
+                //创建$deleteTD
+                var $deleteTD = $("<td/>");
+                var $a = $("<a/>");
+                $a.html("Delete");
+                $a.attr("id",nameVal);
+                $a.attr("href","deleteEmp?id=" + nameVal);
+                $deleteTD.append($a);
+
+                //创建tr对象
+                var $tr = $("<tr/>");
+                $tr.append($nameTD)
+                $tr.append($emailTD)
+                $tr.append($telTD)
+                $tr.append($deleteTD)
+
+                //绑定了点击删除的功能
+                //如果我们返回false,则放弃提交,停留在原页面
+                $a.click(function (){
+                    return deleteUser($a);
+                })
+                //tr加入到table的tbody
+                $("table tbody").append($tr)
+        })
+
+        })
+    </script>
+</head>
+<body>
+<h4 align="center">添加用户：</h4>
+
+姓名：<input type="text" id="name">
+email：<input type="text" id="email">
+电话：<input type="text" id="tel"><br/>
+<input type="submit" align="center" value="提交"><br/>
+<hr>
+
+<table id="table1" align="center" border="1">
+    <tbody>
+    <tr>
+        <td>姓名</td>
+        <td>email</td>
+        <td>电话</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>tom</td>
+        <td>tom@tom.com</td>
+        <td>5000</td>
+        <td><a id="tom" href="deleteEmp?id=tom">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

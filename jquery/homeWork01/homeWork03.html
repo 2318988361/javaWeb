@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            //全选按钮
+            $("#b1").click(function (){
+                // $("input[type=checkbox]").val(["sx","yy","yw","zz"]);
+                //另一种方法，如果没有checked就添加，并设为true
+                //如果有checked 设置为true 表示选中
+                $("input[name='items']").prop("checked",true);
+            })
+            //全不选按钮,状态设置为未选中
+            $("#b2").click(function (){
+                $("input[name='items']").prop("checked",false);
+            })
+            //反选按钮
+            $("#b3").click(function (){
+                $("input[name='items']").each(function (){
+                    if (this.checked){
+                        $(this).prop("checked",false);
+                    }else{
+                        $(this).prop("checked",true);
+                    }
+                })
+            })
+            //全选/全不选勾选
+            $("input[name='allOrEmpty']").click(function (){
+                if (this.checked){
+                    $("input[name='items']").prop("checked",true);
+                }else{
+                    $("input[name='items']").prop("checked",false);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<table width="400" height="100" border="0" cellpadding="0" cellspacing="0" style="margin:-70px 0px 0px 0px; background: #9E9A9E" >
+<input type="checkbox" name="allOrEmpty">全选/全不选<br/>
+<input type="checkbox" name="items" value="sx">数学
+<input type="checkbox" name="items" value="yy">英语
+<input type="checkbox" name="items" value="yw">语文
+<input type="checkbox" name="items" value="zz">政治<br/>
+
+<input type="button" id="b1" value="全选">
+<input type="button" id="b2" value="全不选">
+<input type="button" id="b3" value="反选">
+<input type="submit" value="提交">
+</table>
+</body>
+</html>

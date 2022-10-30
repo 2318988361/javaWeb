@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复合功能</title>
+    <script type="text/javascript" src="../script/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            //第一个按钮
+            $("#b1").click(function (){
+                 $("#num").val("2号")
+            })
+            //第二个按钮
+            $("button").eq(1).click(function (){
+
+                $("#first").val(["2号","5号"]);
+            })
+            //使复选框的复选2和复选4被选中
+            $("button").eq(2).click(function (){
+                $("input[type='checkbox']").val(["2","4"])
+            })
+            //使单选框的单选2号被选中
+            $("button").eq(3).click(function (){
+                $("input[type='radio']").val(["radio2"])
+            })
+        })
+    </script>
+</head>
+<body>
+<button id="b1" >使单选下拉框的2号被选中</button><br/>
+<button id="b2" >使多选下拉框的2号和5号被选中</button><br/>
+<button id="b3" >使复选框的复选2和复选4被选中</button><br/>
+<button id="b4" >使单选框的单选2号被选中</button><br/>
+<button id="b5" >打印已被选中的值</button><br/><br/>
+
+<select name="num" id="num">
+    <option>1号</option>
+    <option id="num2">2号</option>
+    <option>3号</option>
+</select>
+<select name="first" size="7" multiple="multiple" class="td3" id="first">
+    <option value="选项1">1号</option>
+    <option  >2号</option>
+    <option value="选项3">3号</option>
+    <option value="选项4">4号</option>
+    <option >5号</option>
+    <option value="选项6">6号</option>
+</select><br/>
+<input type="checkbox" name="mul" value="1"> 复选1
+<input type="checkbox" name="mul" value="2"> 复选2
+<input type="checkbox" name="mul" value="3"> 复选3
+<input type="checkbox" name="mul" value="4"> 复选4<br/>
+
+<input type="radio" name="single" value="1">单选1
+<input type="radio" name="single" value="radio2">单选2
+<input type="radio" name="single" value="3">单选3
+</body>
+</html>

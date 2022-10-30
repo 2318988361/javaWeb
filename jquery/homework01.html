@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./script/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            //方式一
+            //选择器选择p元素   基础选择器
+            //绑定事件 - 函数 - 获取p元素的文本
+            //统一绑定
+            $("p").click(function (){
+                // alert("p的内容是：" + this.innerText)
+                alert("转成jquery的方式: " + $(this).text())
+            })
+            //方式二 遍历后 循环单个绑定
+            //遍历执行内部function() 依然隐式传入this
+            $("p").each(function (){
+                $(this).click(function (){
+                    alert("p的内容： " + $(this).text())
+                })
+            })
+        })
+
+    </script>
+</head>
+<body>
+<p id="num1">段落1</p><br/>
+<p id="num2">段落2</p><br/>
+<p id="num3">段落3</p><br/>
+
+</body>
+</html>
