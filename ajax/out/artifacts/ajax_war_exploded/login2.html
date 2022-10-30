@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./script/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function (){
+            $("#checkButton").click(function (){
+                $.ajax({
+                    url : "http://localhost:8080/ajax/checkUserServlet",
+                    type: "POST",
+                    data:{
+                        username: $("#uname").val(),
+                        // date: new Date()
+                    },
+                    error: function (){
+                        console.log("失败")
+                    },
+                    success: function (data,status,xhr){
+                        console.log("成功")
+                        console.log("data=" + data)
+                        console.log("status=" + status)
+                        console.log("xhr=" , xhr)
+                        $("#div1").html(JSON.stringify(data));
+
+                        if ("" == data.username){
+                            $("#myres").val("用户名可用");
+                        }else{
+                            $("#myres").val("用户名不可用");
+                        }
+                    },
+                    dataType: "json"
+                    })
+
+            })
+        })
+    </script>
+</head>
+<body>
+<h1>用户注册</h1>
+<form action="http://localhost:8080/ajax/checkUserServlet" method="post">
+    用户姓名: <input type="text" name="username" id="uname">
+    <input type="button" id="checkButton" value="验证用户名">
+    <input style="border-width: 0;color: red" type="text" id="myres"><br/>
+    用户密码: <input type="password"><br/>
+    电子邮件: <input type="text" name="email" id="email"><br/>
+    <input type="submit" value="用户注册">
+</form>
+<h1>返回的json数据</h1>
+<div id="div1"></div>
+</body>
+</html>

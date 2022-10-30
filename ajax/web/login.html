@@ -1,0 +1,61 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>登录界面</title>-->
+<!--    <script type="text/javascript">-->
+<!--        window.onload = function (){-->
+<!--            var checkButton = document.getElementById("checkButton");-->
+
+<!--            checkButton.onclick = function (){-->
+<!--                //创建ajax引擎对象-->
+<!--                var xhr = new XMLHttpRequest();-->
+<!--                //获取输入的用户名的值-->
+<!--                var uname = document.getElementById("uname").value;-->
+<!--                console.log(uname)-->
+<!--                //2. 准备发送指定数据 open, send-->
+<!--                //解读-->
+<!--                //(1)"GET" 请求方式可以 GET/POST-->
+<!--                //(2)"/ajax/checkUserServlet?username=" + uname 就是 url-->
+<!--                //(3)true , 表示异步发送-->
+<!--                xhr.open("GET","http://localhost:8080/ajax/checkUserServlet?uname=" +uname,true)-->
+
+<!--                xhr.onreadystatechange = function (){-->
+<!--                    console.log("xhr",xhr)-->
+<!--                    //如果请求已完成，且响应已就绪, 并且状态码是200-->
+<!--                    if (xhr.readyState == 4 && xhr.status == 200){-->
+<!--                        //把返的json数据显示在div-->
+<!--                        document.getElementById("div1").innerHTML = xhr.responseText;-->
+
+<!--                        var responseText = xhr.responseText;-->
+
+<!--                        if (responseText != ""){-->
+<!--                            document.getElementById("myres").value = "用户名不可用";-->
+<!--                        }else{-->
+<!--                            document.getElementById("myres").value = "用户名可用";-->
+<!--                        }-->
+<!--                    }-->
+<!--                }-->
+
+<!--                //真正发送ajax请求-->
+<!--                xhr.send();-->
+
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>用户注册</h1>-->
+<!--<form action="http://localhost:8080/ajax/checkUserServlet" method="post">-->
+<!--用户姓名: <input type="text" name="username" id="uname">-->
+<!--<input type="button" id="checkButton" value="验证用户名">-->
+<!--<input style="border-width: 0;color: red" type="text" id="myres"><br/>-->
+<!--用户密码: <input type="password"><br/>-->
+<!--电子邮件: <input type="text" name="email"><br/>-->
+<!--<input type="submit" value="用户注册">-->
+<!--</form>-->
+<!--<h1>返回的json数据</h1>-->
+<!--<div id="div1"></div>-->
+
+<!--</body>-->
+<!--</html>-->

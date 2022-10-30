@@ -1,0 +1,58 @@
+page:490
+35CBED-5F7B3-7B605-E7431-BF2BB-8F4849-5Y99999
+1.  快捷键ctrl+D   删除当前行
+2.  crtl+alt+向下光标，向下复制当前行
+3.  alt + /    补全代码
+4.  alt + enter自动导入所需类 (import java.util.Scanner;)
+5.  crtl + alt +L 快速代码格式化
+6.  alt + R    快速运行程序
+7.  alt + insert  生成构造器的快捷键
+8.  ctrl + H可以查看一个类的层级（继承）关系
+9.  ctrl + B 快速定位切换方法的位置，查看JDK源码
+10. (ctrl+alt+v)自动分配变量名，通过后面加(.var),例如：new Scanner(System.in).var
+CTRL + alt +b 图表查看子类
+11.Ctrl + j  显示全部快捷键的提示
+12.快速抛出异常  alt + enter
+13. /** +enter 快速添加变量注释
+14.ctrl+alt+b   查看接口的子接口和实现子类
+15.ctrl+w  选定空格之间的字段
+16. ctrl+alt+向左箭头    返回上一次显示界面
+访问修饰符                同类      同包       子类        不同包
+公开public                 ok         ok           ok             ok         
+受保护protected       ok        ok           ok              no
+无修饰符默认             ok         ok          no              no
+私人private               ok         no           no             no
+
+
+
+
+匿名内部类的使用
+public class Homework04 {
+    public static void main(String[] args) {
+        CellPhone cellPhone = new CellPhone();
+        cellPhone.testWork(new Calculate() {
+            @Override
+            public double work(double n1, double n2) {
+                return n1 + n2;
+            }
+        },10,20);
+        
+        cellPhone.testWork(new Calculate() {
+            @Override
+            public double work(double n1, double n2) {
+                return n1*n2;
+            }
+        },3,5);
+    }
+}
+
+interface Calculate {
+    public double work(double n1, double n2);
+}
+
+class CellPhone {
+    public void testWork(Calculate calculate,double n1,double n2) {
+        double result = calculate.work(n1,n2);
+        System.out.println("计算结果是：" + result);
+    }
+}
